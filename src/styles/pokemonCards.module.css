@@ -1,0 +1,33 @@
+.gameContainer {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5em;
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+.pokemonCard {
+  width: 12em;
+  height: 12em;
+  cursor: pointer;
+  background-color: #2a75bb;
+  color: #ffcb05;
+  box-shadow: 0 2px 6px 6px #c7a10891;
+  border-radius: 4px;
+}
+
+.pokemonCard:hover {
+  background-color: #3c5aa6;
+}
+
+.pokemonPicture {
+  width: 100%;
+  max-width: 8em;
+  height: auto;
+}

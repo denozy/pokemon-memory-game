@@ -1,12 +1,21 @@
+import styles from "./styles/pokemonCards.module.css";
 export default function PokemonCards({ pokemon, handleClick }) {
   return (
-    <div>
-      <div>
+    <div className={styles.gameContainer}>
+      <div className={styles.cardContainer}>
         {pokemon.map((p) => (
-          <button key={p.id} onClick={() => handleClick(p)}>
+          <button
+            className={styles.pokemonCard}
+            key={p.id}
+            onClick={() => handleClick(p)}
+          >
             <div>
-              <h1>{p.name}</h1>
-              <img src={p.sprites.front_default} alt={p.name} />
+              <img
+                className={styles.pokemonPicture}
+                src={p.sprites.front_default}
+                alt={p.name}
+              />
+              <h3>{p.name}</h3>
             </div>
           </button>
         ))}

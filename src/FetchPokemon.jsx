@@ -1,11 +1,11 @@
 import { useEffect } from "react";
-export default function FetchPokemon({ pokemon, setPokemon }) {
+export default function FetchPokemon({ pokemon, setPokemon, difficulty }) {
   const url = "https://pokeapi.co/api/v2/pokemon/";
   const firstGenTotal = 151;
 
   useEffect(() => {
     const fetchData = async () => {
-      const pokemonData = await getPokemon(10);
+      const pokemonData = await getPokemon(difficulty);
       setPokemon(pokemonData);
     };
 

@@ -1,0 +1,15 @@
+.headerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2a75bb;
+  height: 10vh;
+}
+
+header {
+  color: #ffcb05;
+  letter-spacing: 2px;
+  word-spacing: 5px;
+  font-size: 2em;
+}

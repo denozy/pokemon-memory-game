@@ -2,11 +2,16 @@ import { useState, useEffect } from "react";
 import FetchPokemon from "./FetchPokemon";
 import GameLogic from "./GameLogic";
 import PokemonCards from "./PokemonCards";
+import Header from "./Header";
+import styles from "./styles/app.module.css";
+import Footer from "./Footer";
+import ScoreContainer from "./ScoreContainer";
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
   const [score, setScore] = useState(0);
   const [clicked, setClicked] = useState([]);
+  const [difficulty, setDifficulty] = useState(10);
 
   function storeClick(p) {
     if (!clicked.includes(p.id)) {
@@ -49,9 +54,16 @@ function App() {
 
   return (
     <div>
-      <FetchPokemon pokemon={pokemon} setPokemon={setPokemon} />
+      <Header />
+      <ScoreContainer score={score} pokemonLength={pokemon.length} />
+      <FetchPokemon
+        pokemon={pokemon}
+        setPokemon={setPokemon}
+        difficulty={difficulty}
+      />
       <GameLogic pokemon={pokemon} clicked={clicked} />
       <PokemonCards pokemon={pokemon} handleClick={handleClick} />
+      <Footer />
     </div>
   );
 }
