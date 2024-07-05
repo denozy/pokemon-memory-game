@@ -31,3 +31,7 @@
   max-width: 8em;
   height: auto;
 }
+
+.pokemonName {
+  text-transform: capitalize;
+}

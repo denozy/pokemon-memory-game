@@ -10,7 +10,7 @@ export default function FetchPokemon({ pokemon, setPokemon, difficulty }) {
     };
 
     fetchData();
-  }, []);
+  }, [difficulty]);
 
   //generates an array of numbers between 1-151, amount based on count.
   function getRandomIndexArray(count) {

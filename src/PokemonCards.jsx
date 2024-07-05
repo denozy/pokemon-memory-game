@@ -15,7 +15,7 @@ export default function PokemonCards({ pokemon, handleClick }) {
                 src={p.sprites.front_default}
                 alt={p.name}
               />
-              <h3>{p.name}</h3>
+              <h3 className={styles.pokemonName}>{p.name}</h3>
             </div>
           </button>
         ))}
