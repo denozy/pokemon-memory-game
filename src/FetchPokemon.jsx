@@ -60,6 +60,10 @@ export default function FetchPokemon() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    checkWin();
+  }, [clicked]);
+
   const handleShuffle = () => {
     setPokemon((prevPokemon) => shuffleArray(prevPokemon));
   };
@@ -80,6 +84,12 @@ export default function FetchPokemon() {
   function loseCondition(p) {
     if (clicked.includes(p.id)) {
       console.log("You lose");
+    }
+  }
+
+  function checkWin() {
+    if (clicked.length === pokemon.length) {
+      console.log("You win!");
     }
   }
 
