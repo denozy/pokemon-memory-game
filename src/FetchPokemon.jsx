@@ -1,13 +1,16 @@
-import { useState, useEffect } from "react";
-
-//returns a pokemon object
-export default function FetchPokemon() {
-  const [pokemon, setPokemon] = useState([]);
-  const [score, setScore] = useState(0);
-  const [clicked, setClicked] = useState([]);
-
+import { useEffect } from "react";
+export default function FetchPokemon({ pokemon, setPokemon }) {
   const url = "https://pokeapi.co/api/v2/pokemon/";
   const firstGenTotal = 151;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const pokemonData = await getPokemon(10);
+      setPokemon(pokemonData);
+    };
+
+    fetchData();
+  }, []);
 
   //generates an array of numbers between 1-151, amount based on count.
   function getRandomIndexArray(count) {
@@ -19,15 +22,6 @@ export default function FetchPokemon() {
       }
     }
     return randomIndexes;
-  }
-  //Fisher-Yates(Knuth) shuffle algorithm
-  function shuffleArray(array) {
-    const shuffledArray = [...array];
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]]; // Swap elements
-    }
-    return shuffledArray;
   }
 
   async function getPokemon(count) {
@@ -50,68 +44,4 @@ export default function FetchPokemon() {
     console.log(pokemonArray);
     return pokemonArray;
   }
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const pokemonData = await getPokemon(5);
-      setPokemon(pokemonData);
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    checkWin();
-  }, [clicked]);
-
-  const handleShuffle = () => {
-    setPokemon((prevPokemon) => shuffleArray(prevPokemon));
-  };
-
-  function storeClick(p) {
-    if (!clicked.includes(p.id)) {
-      setClicked((prevClicked) => [...prevClicked, p.id]);
-    }
-  }
-
-  function incrementScore(p) {
-    if (!clicked.includes(p.id)) {
-      setScore((prevScore) => prevScore + 1);
-      storeClick(p);
-    }
-  }
-
-  function loseCondition(p) {
-    if (clicked.includes(p.id)) {
-      console.log("You lose");
-    }
-  }
-
-  function checkWin() {
-    if (clicked.length === pokemon.length) {
-      console.log("You win!");
-    }
-  }
-
-  function handleClick(p) {
-    handleShuffle();
-    incrementScore(p);
-    loseCondition(p);
-  }
-
-  return (
-    <div>
-      {score}
-      <div>
-        {pokemon.map((p) => (
-          <button key={p.id} onClick={() => handleClick(p)}>
-            <div>
-              <h1>{p.name}</h1>
-              <img src={p.sprites.front_default} alt={p.name} />
-            </div>
-          </button>
-        ))}
-      </div>
-    </div>
-  );
 }
