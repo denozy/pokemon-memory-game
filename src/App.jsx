@@ -7,6 +7,7 @@ import styles from "./styles/app.module.css";
 import Footer from "./Footer";
 import ScoreContainer from "./ScoreContainer";
 import StartScreen from "./StartScreen";
+import WinScreen from "./WinScreen";
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
@@ -14,6 +15,7 @@ function App() {
   const [clicked, setClicked] = useState([]);
   const [difficulty, setDifficulty] = useState(5);
   const [showStart, setShowStart] = useState(true);
+  const [winOrLose, setWinOrLose] = useState(null);
 
   function storeClick(p) {
     if (!clicked.includes(p.id)) {
@@ -71,11 +73,17 @@ function App() {
             setPokemon={setPokemon}
             difficulty={difficulty}
           />
-          <GameLogic pokemon={pokemon} clicked={clicked} />
+          <GameLogic
+            pokemon={pokemon}
+            clicked={clicked}
+            setWinOrLose={setWinOrLose}
+            difficulty={difficulty}
+          />
           <PokemonCards pokemon={pokemon} handleClick={handleClick} />
           <Footer />
         </>
       )}
+      {winOrLose === true && <WinScreen setShowStart={setShowStart} />}
     </div>
   );
 }
