@@ -16,6 +16,11 @@
   flex-direction: column;
 }
 
+.winContainer h1 {
+  color: whitesmoke;
+}
+
 .winButton {
   padding: 20px;
+  cursor: pointer;
 }

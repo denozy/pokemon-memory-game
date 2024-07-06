@@ -14,6 +14,7 @@ export default function PokemonCards({ pokemon, handleClick }) {
                 className={styles.pokemonPicture}
                 src={p.sprites.front_default}
                 alt={p.name}
+                draggable="false"
               />
               <h3 className={styles.pokemonName}>{p.name}</h3>
             </div>
