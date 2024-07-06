@@ -12,7 +12,6 @@ export default function GameLogic({
 
   function checkWin() {
     if (clicked.length == difficulty) {
-      console.log("You win!");
       setWinOrLose(true);
     }
   }

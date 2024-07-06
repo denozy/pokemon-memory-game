@@ -41,7 +41,6 @@ export default function FetchPokemon({ pokemon, setPokemon, difficulty }) {
         console.error("Error fetching data:", error);
       }
     }
-    console.log(pokemonArray);
     return pokemonArray;
   }
 }

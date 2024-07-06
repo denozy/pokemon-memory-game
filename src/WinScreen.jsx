@@ -1,17 +1,24 @@
 import styles from "./styles/winScreen.module.css";
-export default function WinScreen({ setShowStart }) {
+export default function WinScreen({
+  setShowStart,
+  winOrLose,
+  setWinOrLose,
+  setClicked,
+  setScore,
+}) {
+  function handleReset() {
+    setShowStart(true);
+    setWinOrLose(null);
+    setClicked([]);
+    setScore(0);
+  }
   return (
     <div className={styles.winScreen}>
       <div className={styles.winContainer}>
-        <h1>You Win!!!</h1>
-        <h2>Play Again?</h2>
+        {winOrLose ? <h1>You Win!!!</h1> : <h1>You Lose </h1>}
         <div>
-          <button
-            className={styles.winButton}
-            onClick={() => setShowStart(true)}
-            value={true}
-          >
-            Yes
+          <button className={styles.winButton} onClick={handleReset}>
+            <h2>Play Again?</h2>
           </button>
         </div>
       </div>

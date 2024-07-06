@@ -46,7 +46,7 @@ function App() {
 
   function loseCondition(p) {
     if (clicked.includes(p.id)) {
-      console.log("You lose");
+      setWinOrLose(false);
     }
   }
 
@@ -55,6 +55,11 @@ function App() {
     incrementScore(p);
     loseCondition(p);
   }
+
+  useEffect(() => {
+    if (winOrLose !== null) {
+    }
+  }, [winOrLose]);
 
   return (
     <div>
@@ -83,7 +88,15 @@ function App() {
           <Footer />
         </>
       )}
-      {winOrLose === true && <WinScreen setShowStart={setShowStart} />}
+      {(winOrLose === true || winOrLose === false) && (
+        <WinScreen
+          winOrLose={winOrLose}
+          setWinOrLose={setWinOrLose}
+          setShowStart={setShowStart}
+          setClicked={setClicked}
+          setScore={setScore}
+        />
+      )}
     </div>
   );
 }
