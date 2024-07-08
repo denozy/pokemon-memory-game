@@ -1,0 +1,21 @@
+.winScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.winContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.winContainer h1 {
+  color: whitesmoke;
+}

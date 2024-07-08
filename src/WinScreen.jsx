@@ -5,12 +5,14 @@ export default function WinScreen({
   setWinOrLose,
   setClicked,
   setScore,
+  setDifficulty,
 }) {
   function handleReset() {
     setShowStart(true);
     setWinOrLose(null);
     setClicked([]);
     setScore(0);
+    setDifficulty(null);
   }
   return (
     <div className={styles.winScreen}>
