@@ -16,7 +16,7 @@ function App() {
   const [difficulty, setDifficulty] = useState(null);
   const [showStart, setShowStart] = useState(true);
   const [winOrLose, setWinOrLose] = useState(null);
-  const [isLoading, setIsLoading] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const url = "https://pokeapi.co/api/v2/pokemon/";
   const firstGenTotal = 151;
@@ -24,20 +24,20 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-
       try {
         const pokemonData = await getPokemon(difficulty);
         setPokemon(pokemonData);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        setTimeout(() => {
-          setIsLoading(false);
-        });
+        await new Promise((resolve) => setTimeout(resolve, 1000)); // Adjust duration as needed
+        setIsLoading(false);
       }
     };
 
-    fetchData();
+    if (!showStart) {
+      fetchData();
+    }
   }, [showStart]);
 
   //generates an array of numbers between 1-151, amount based on count.
@@ -128,29 +128,24 @@ function App() {
 
   return (
     <div className={styles.app}>
-      {isLoading ? (
-        <div>
-          <LoadingScreen />
-        </div>
+      {showStart ? (
+        <StartScreen
+          showStart={showStart}
+          setShowStart={setShowStart}
+          setDifficulty={setDifficulty}
+        />
       ) : (
         <>
-          {showStart ? (
-            <StartScreen
-              showStart={showStart}
-              setShowStart={setShowStart}
-              setDifficulty={setDifficulty}
-            />
+          <Header />
+          <ScoreContainer score={score} pokemonLength={pokemon.length} />
+          {isLoading ? (
+            <LoadingScreen />
           ) : (
-            <>
-              <Header />
-              <ScoreContainer score={score} pokemonLength={pokemon.length} />
-              <PokemonCards pokemon={pokemon} handleClick={handleClick} />
-              <Footer />
-            </>
+            <PokemonCards pokemon={pokemon} handleClick={handleClick} />
           )}
+          <Footer />
         </>
       )}
-
       {(winOrLose === true || winOrLose === false) && (
         <WinScreen
           winOrLose={winOrLose}
