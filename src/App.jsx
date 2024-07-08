@@ -16,6 +16,11 @@ function App() {
   const [difficulty, setDifficulty] = useState(5);
   const [showStart, setShowStart] = useState(true);
   const [winOrLose, setWinOrLose] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    console.log("isLoading changed:", isLoading);
+  }, [isLoading]);
 
   function storeClick(p) {
     if (!clicked.includes(p.id)) {
@@ -37,7 +42,7 @@ function App() {
   //Fisher-Yates(Knuth) shuffle algorithm
   function shuffleArray(array) {
     const shuffledArray = [...array];
-    for (let i = array.length - 1; i > 0; i--) {
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]]; // Swap elements
     }
@@ -73,10 +78,13 @@ function App() {
         <>
           <Header />
           <ScoreContainer score={score} pokemonLength={pokemon.length} />
+
           <FetchPokemon
             pokemon={pokemon}
             setPokemon={setPokemon}
             difficulty={difficulty}
+            setIsLoading={setIsLoading}
+            isLoading={isLoading}
           />
           <GameLogic
             pokemon={pokemon}

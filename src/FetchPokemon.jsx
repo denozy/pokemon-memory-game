@@ -1,12 +1,21 @@
 import { useEffect } from "react";
-export default function FetchPokemon({ pokemon, setPokemon, difficulty }) {
+export default function FetchPokemon({
+  pokemon,
+  setPokemon,
+  difficulty,
+  setIsLoading,
+  isLoading,
+}) {
   const url = "https://pokeapi.co/api/v2/pokemon/";
   const firstGenTotal = 151;
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       const pokemonData = await getPokemon(difficulty);
       setPokemon(pokemonData);
+
+      setIsLoading(false);
     };
 
     fetchData();
@@ -27,9 +36,9 @@ export default function FetchPokemon({ pokemon, setPokemon, difficulty }) {
   async function getPokemon(count) {
     const randomIndexes = getRandomIndexArray(count);
     const pokemonArray = [];
-    while (randomIndexes.length > 0) {
+    for (let i = 0; i < count; i++) {
+      const randomIndex = randomIndexes.pop();
       try {
-        const randomIndex = randomIndexes.pop();
         const response = await fetch(url + randomIndex);
         if (!response.ok) {
           throw new Error("Failed to fetch pokemon");

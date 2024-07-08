@@ -4,9 +4,10 @@ This memory card game renders pokemon cards for the user to click.
 The objective is to click as many unique pokemon as possible without clicking a duplicate.
 
 ----going forward ----
-make game resetable at win/lose screen
-(possibly combine win and lose screen? probably would be a simple ternary)
+add a loading screen
+add a transition animation when cards are initially displayed and shuffled.
 
-create lose screen and have it pop up when user loses.
-
-could add a transition animation in the shuffle effect
+---optional----mainly add to show skills
+add music
+add sound effects for clicks
+create neat drop down modal for rules or something.
