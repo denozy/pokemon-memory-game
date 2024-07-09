@@ -12,6 +12,10 @@ export default function StartScreen({
   return (
     <div className={styles.startModal}>
       <div className={styles.startScreenContainer}>
+        <div className={styles.titleContainer}>
+          <h1>Pokemon Match 'Em!</h1>
+        </div>
+
         <div>
           <div className={styles.startScreenText}>
             <h1>Difficulty</h1>

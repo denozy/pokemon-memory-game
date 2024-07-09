@@ -8,8 +8,25 @@
 }
 
 header {
+  display: flex;
+  align-items: center;
   color: #ffcb05;
   letter-spacing: 2px;
   word-spacing: 5px;
   font-size: 2em;
+}
+
+.pokemonImage {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.pokemonImage img {
+  height: 100%;
+  width: auto;
+}
+
+.headerText {
+  margin: 0 20px;
 }

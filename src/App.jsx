@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import PokemonCards from "./PokemonCards";
 import Header from "./Header";
@@ -18,6 +18,8 @@ function App() {
   const [winOrLose, setWinOrLose] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const originalPokemonRef = useRef([]);
+
   const url = "https://pokeapi.co/api/v2/pokemon/";
   const firstGenTotal = 151;
 
@@ -27,10 +29,11 @@ function App() {
       try {
         const pokemonData = await getPokemon(difficulty);
         setPokemon(pokemonData);
+        originalPokemonRef.current = pokemonData;
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        await new Promise((resolve) => setTimeout(resolve, 1000)); // Adjust duration as needed
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         setIsLoading(false);
       }
     };
@@ -136,7 +139,7 @@ function App() {
         />
       ) : (
         <>
-          <Header />
+          <Header pokemon={originalPokemonRef.current} isLoading={isLoading} />
           <ScoreContainer score={score} pokemonLength={pokemon.length} />
           {isLoading ? (
             <LoadingScreen />

@@ -20,14 +20,30 @@
   justify-content: space-evenly;
 }
 
+.titleContainer {
+  text-align: center;
+  line-height: 2em;
+  font-size: 1em;
+  padding: 0.5em;
+  background-color: #2a75bb;
+  border-radius: 5px;
+}
+
+.titleContainer h1 {
+  color: #ffcb05;
+  padding: 20px;
+  font-size: 3em;
+}
+
 .startScreenText {
   width: 100%;
   text-align: center;
   margin-bottom: 30px;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 .startScreenText h1 {
   color: whitesmoke;
+  letter-spacing: 0.03em;
 }
 
 .buttonContainer {
@@ -36,7 +52,7 @@
 }
 
 .startButton {
-  padding: 20px;
+  padding: 15px;
   font-size: 2em;
   cursor: pointer;
   background-color: #2a75bb;
@@ -51,9 +67,9 @@
 
 .rulesContainer {
   text-align: center;
-  line-height: 3em;
-  font-size: 2em;
-  padding: 1em;
+  line-height: 2.5em;
+  font-size: 1.25em;
+  padding: 0.5em;
   background-color: #2a75bb;
   border-radius: 5px;
 }
