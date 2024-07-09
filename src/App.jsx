@@ -102,12 +102,15 @@ function App() {
     setPokemon((prevPokemon) => shuffleArray(prevPokemon));
   };
 
-  //Fisher-Yates(Knuth) shuffle algorithm
+  // Fisher-Yates (Knuth) shuffle algorithm
   function shuffleArray(array) {
     const shuffledArray = [...array];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+      [shuffledArray[i], shuffledArray[j]] = [
+        shuffledArray[j],
+        shuffledArray[i],
+      ]; // Swap elements
     }
     return shuffledArray;
   }
