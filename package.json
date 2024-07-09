@@ -1,6 +1,7 @@
 {
   "name": "pokemon-memory-card",
   "private": true,
+  "homepage": "https://denozy.github.io/pokemon-memory-game/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
