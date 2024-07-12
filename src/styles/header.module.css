@@ -14,12 +14,14 @@ header {
   letter-spacing: 2px;
   word-spacing: 5px;
   font-size: 2em;
+  flex-wrap: nowrap;
 }
 
 .pokemonImage {
   display: flex;
   align-items: center;
   margin: 0 10px;
+  flex-shrink: 0;
 }
 
 .pokemonImage img {
@@ -29,4 +31,11 @@ header {
 
 .headerText {
   margin: 0 20px;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  header {
+    font-size: 1.5em;
+  }
 }

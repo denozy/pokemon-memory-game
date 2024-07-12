@@ -52,7 +52,7 @@
 }
 
 .startButton {
-  padding: 15px;
+  padding: 0.5em;
   font-size: 2em;
   cursor: pointer;
   background-color: #2a75bb;

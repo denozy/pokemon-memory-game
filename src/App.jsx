@@ -141,7 +141,7 @@ function App() {
           setDifficulty={setDifficulty}
         />
       ) : (
-        <>
+        <div className={styles.gameScreen}>
           <Header pokemon={originalPokemonRef.current} isLoading={isLoading} />
           <ScoreContainer score={score} pokemonLength={pokemon.length} />
           {isLoading ? (
@@ -150,7 +150,7 @@ function App() {
             <PokemonCards pokemon={pokemon} handleClick={handleClick} />
           )}
           <Footer />
-        </>
+        </div>
       )}
       {(winOrLose === true || winOrLose === false) && (
         <WinScreen
